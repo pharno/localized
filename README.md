@@ -68,3 +68,14 @@ a session you have to synchronize the entities with `Session.flush()` and `Sessi
 I'm currently using this i18n method in a project which is under development.
 There is no practical knowledge about stability, scalabilty or performance.
 Use it at your own risk! 
+
+# License and author
+
+Markus Malkusch <markus@malkusch.de> is the author of this project. This project is free and under the WTFPL.
+
+## Donations
+
+If you like this project and feel generous donate a few Bitcoins here:
+[1335STSwu9hST4vcMRppEPgENMHD2r1REK](bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK)
+
+
