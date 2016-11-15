@@ -1,94 +1,86 @@
 package de.malkusch.localized;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Locale;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-
 /**
  * Entity for storing @{@link Localized} fields of an arbitrary entity.
- * 
+ *
  * @author Markus Malkusch <markus@malkusch.de>
  * @since 0.2.8
  */
 @Entity
-@Table(uniqueConstraints=@UniqueConstraint(columnNames={"type", "instance", "locale", "field"}))
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"type", "instance", "locale", "field"}))
 public class LocalizedProperty implements Serializable {
-	
-	private static final long serialVersionUID = 1080823819223199393L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+    private static final long serialVersionUID = 1080823819223199393L;
 
-	private Class<?> type;
-	
-	private String instance;
-	
-	private Locale locale;
-	
-	private String field;
-	
-	@Lob
-	private Serializable value;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-	public Class<?> getType() {
-		return type;
-	}
+    private Class<?> type;
 
-	public void setType(Class<?> type) {
-		this.type = type;
-	}
+    private String instance;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
-	public Long getId() {
-		return id;
-	}
-	
-	public Locale getLocale() {
-		return locale;
-	}
+    private Locale locale;
 
-	public void setLocale(Locale locale) {
-		this.locale = locale;
-	}
+    private String field;
 
-	public String getField() {
-		return field;
-	}
+    private String value;
 
-	public void setField(String field) {
-		this.field = field;
-	}
+    public Class<?> getType() {
+        return type;
+    }
 
-	public Serializable getValue() {
-		return value;
-	}
+    public void setType(Class<?> type) {
+        this.type = type;
+    }
 
-	public void setValue(Serializable value) {
-		this.value = value;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getInstance() {
-		return instance;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setInstance(String instance) {
-		this.instance = instance;
-	}
-	
-	@Override
-	public String toString() {
-		return String.format("locale=%s, id=%s, %s.%s='%s'", locale, instance, type.getSimpleName(), field, value);
-	}
+    public Locale getLocale() {
+        return locale;
+    }
+
+    public void setLocale(Locale locale) {
+        this.locale = locale;
+    }
+
+    public String getField() {
+        return field;
+    }
+
+    public void setField(String field) {
+        this.field = field;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getInstance() {
+        return instance;
+    }
+
+    public void setInstance(String instance) {
+        this.instance = instance;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("locale=%s, id=%s, %s.%s='%s'", locale, instance, type.getSimpleName(), field, value);
+    }
 
 }

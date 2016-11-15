@@ -12,7 +12,6 @@ import org.hibernate.event.spi.PostUpdateEvent;
 import org.hibernate.event.spi.PostUpdateEventListener;
 import org.hibernate.persister.entity.EntityPersister;
 
-import java.io.Serializable;
 import java.lang.reflect.Field;
 
 /**
@@ -43,7 +42,7 @@ public class WriteEventListener extends AbstractEventListener implements
     @Override
     protected void handleField(StatelessSession session, Field field, Object entity, LocalizedProperty property) throws LocalizedException {
         try {
-            property.setValue((Serializable) field.get(entity));
+            property.setValue((String) field.get(entity));
             if (property.getId() == null) {
                 session.insert(property);
 
